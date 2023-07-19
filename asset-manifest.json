@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Hany-AbdulGawed-platform/static/css/main.073c9b0a.css",
-    "main.js": "/Hany-AbdulGawed-platform/static/js/main.3ee5f5a0.js",
+    "main.js": "/Hany-AbdulGawed-platform/static/js/main.ba330b59.js",
     "index.html": "/Hany-AbdulGawed-platform/index.html",
     "main.073c9b0a.css.map": "/Hany-AbdulGawed-platform/static/css/main.073c9b0a.css.map",
-    "main.3ee5f5a0.js.map": "/Hany-AbdulGawed-platform/static/js/main.3ee5f5a0.js.map"
+    "main.ba330b59.js.map": "/Hany-AbdulGawed-platform/static/js/main.ba330b59.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.3ee5f5a0.js"
+    "static/js/main.ba330b59.js"
   ]
 }
