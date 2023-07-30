@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Hany-AbdulGawed-platform/static/css/main.1e7730f9.css",
-    "main.js": "/Hany-AbdulGawed-platform/static/js/main.5dfd1a7b.js",
+    "main.js": "/Hany-AbdulGawed-platform/static/js/main.d19f6af5.js",
     "static/media/master SVG.png": "/Hany-AbdulGawed-platform/static/media/master SVG.1ad50c2086aa4a52d1d2.png",
     "static/media/Algebra.png": "/Hany-AbdulGawed-platform/static/media/Algebra.a76153e46041c904bb00.png",
     "static/media/Revisiones.png": "/Hany-AbdulGawed-platform/static/media/Revisiones.725aae3be1996c75d902.png",
@@ -11,10 +11,10 @@
     "static/media/Statics.jpg": "/Hany-AbdulGawed-platform/static/media/Statics.ab46cac427e6f29f7ce7.jpg",
     "index.html": "/Hany-AbdulGawed-platform/index.html",
     "main.1e7730f9.css.map": "/Hany-AbdulGawed-platform/static/css/main.1e7730f9.css.map",
-    "main.5dfd1a7b.js.map": "/Hany-AbdulGawed-platform/static/js/main.5dfd1a7b.js.map"
+    "main.d19f6af5.js.map": "/Hany-AbdulGawed-platform/static/js/main.d19f6af5.js.map"
   },
   "entrypoints": [
     "static/css/main.1e7730f9.css",
-    "static/js/main.5dfd1a7b.js"
+    "static/js/main.d19f6af5.js"
   ]
 }
