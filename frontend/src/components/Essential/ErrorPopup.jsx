@@ -1,27 +1,30 @@
 import { useState } from "react";
 import logs from "../../utilities/console";
 import { networkLogs } from '../../utilities/fetch.js';
+import { createIssue } from "../../API/issuesAPI.js";
 require('../../utilities/console.js');
 
 
 const ErrorPopup = ({isShown, setIsShown}) => {
     const [name, setName] = useState('')
     const [issue, setIssue] = useState('')
-    const handleReportIssue = () => {
-        console.group("Report Issue");
-        console.log(logs)
-        console.log(
-            'user', {
+
+    const handleReportIssue = async() => {
+        const data = {
+            name: name,
+            logs: logs,
+            networkLogs: networkLogs,
+            user:{
                 id: localStorage.getItem('id'),
                 Recordedname: localStorage.getItem('userName'),
                 name: name,
                 issue: issue,
                 email : localStorage.getItem('userEmail')
             }
-        )
-        console.log(networkLogs)
-        console.groupEnd();
+        }
+        await createIssue(data)
         setIsShown(false)
+        alert('sent')
     }
 
     return (
