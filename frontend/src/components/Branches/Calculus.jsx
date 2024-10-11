@@ -2,6 +2,8 @@ import LoginBtn from '../Essential/login'
 import { useLessonsAPI } from '../../hooks/useLessonsAPI';
 import LessonContainer from '../Essential/lessonContainer';
 
+require('../../utilities/console.js');
+
 const Calculus = ({setVideoId, user, userPayingSystem, userCodes}) =>{
     const Calculuslessons = useLessonsAPI('calculus') || []
     // Branch Name

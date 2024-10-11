@@ -19,6 +19,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LessonView from "./components/Main/Admin/Lesson-View/lessonView";
 import UserView from "./components/Main/Admin/User-View/userView";
 
+require('./utilities/console.js');
+
 function App({redirect_url}) {
   const [currentUser, setCurrentUser] = useState({
     name: "",

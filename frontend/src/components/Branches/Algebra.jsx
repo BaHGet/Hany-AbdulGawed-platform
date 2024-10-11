@@ -2,6 +2,8 @@ import LoginBtn from '../Essential/login'
 import { useLessonsAPI } from '../../hooks/useLessonsAPI';
 import LessonContainer from '../Essential/lessonContainer';
 
+require('../../utilities/console.js');
+
 const Algebra = ({setVideoId, user, userPayingSystem, userCodes}) =>{
     const Algebralessons = useLessonsAPI('algebra') || []
     // Branch Name

@@ -6,6 +6,8 @@ import arrowUp from '.././photos/arrow-up-filled.png'
 import * as CodeAPI from '../../API/CodeAPI'
 import * as UserAPI from '../../API/UesrApi'
 
+require('../../utilities/console.js');
+
 const dayjs  = require('dayjs')
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
@@ -16,7 +18,6 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
     
     // time for lectuer to close
     let hours=96;
-
     const getIDfromURL = (url)=> {
         /* 
             @param {string} url - Youtube video url
