@@ -1,3 +1,5 @@
+require('../utilities/fetch.js')
+
 const codesapi = 'https://hany-server.netlify.app/.netlify/functions/api'
 
 export const getAll= async(branch)=>{
@@ -53,7 +55,3 @@ export const UpdataOrderCodes= async(branch, order, code)=>{
     const data = await res
     return(data);
 }
-
-
-
-

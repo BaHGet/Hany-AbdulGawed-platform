@@ -1,3 +1,5 @@
+require('../utilities/fetch.js')
+
 const lessonsApi = 'https://hany-server.netlify.app/.netlify/functions/api/lessons'
 
 export const getAll= async(branch)=>{
