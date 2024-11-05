@@ -16,8 +16,7 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
     const[exist, setExist] = useState([])
     const[inputValue, setInputValue] = useState([])
     
-    // time for lectuer to close
-    let hours=96;
+    let hours=96; // time for lectuer to close
     const getIDfromURL = (url)=> {
         /* 
             @param {string} url - Youtube video url
@@ -78,6 +77,7 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
         /* 
             @param {number} diff - difference between two dates in milliseconds
             Format a date as 'X days, Y hours, Z minutes'
+            @return {string} formatted date 
         */
         const milliSecondsInDay = 24 * 60 * 60 * 1000;
         const milliSecondsInHour = 60 * 60 * 1000;
@@ -350,7 +350,99 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
                         )
                     }
                 }else{
-                    return('')
+                    return(
+                        <Fragment key={'lesson-fragment'+num}>
+                            <div key={'lesson'+num} className="lesson">
+                                <div className='lesson-title'>
+                                    <h1 className="lecture-name">{lesson.name}</h1>
+                                    <li id={'form'+lesson.order} key={'partInput'+num}>
+                                        <form  onSubmit={e => e.preventDefault()}>
+                                            <input
+                                                id={lesson.order}
+                                                className='input-field'
+                                                type="text"
+                                                placehorder="Input code(case sensitive!)"
+                                                onChange={handleChange}
+                                                max='10'
+                                            />
+                                            {
+                                            inputValue.length !== 0 &&
+                                            <button id={lesson.order} onClick={handleSubmit} style={{backgroundColor:'white',color:'black',fontWeight:'bold'}} >Check</button>
+                                            }
+                                        </form>
+                                    </li>
+                                    {exist.map((ele, num) =>{
+                                            return(
+                                                ele[0] === lesson.order && (
+                                                    ele[1] === 0 &&
+                                                    <li id='wrong'
+                                                        style={{color:'rgb(99, 2, 2)',fontWeight:'bold', listStyleType: 'none', marginRight:'8vw'}}
+                                                        key={'duration'+num}>
+                                                        كود غير صحيح
+                                                    </li>
+                                                )
+                                            )
+                                        })}
+                                    <img className="arrow-div" src={arrowUp} alt="arrow-up"/>
+                                </div>
+                            </div>
+                            {
+                            lesson.order.search('revision') === -1 &&
+                            <ul key={'lesson-parts'+num} className='lesson-parts'>
+                                {lesson.parts.map((part,num)=>{
+                                    if(part.lessonName.search('مسائل الملزمة') !== -1){
+                                        return(
+                                            <li key={'partObject'+num}>
+                                                <ul className='lesson-part'>
+                                                    <li key={'partName'+num}>
+                                                        {part.lessonName}
+                                                    </li>
+                                                    <li key={'partLink'+num}>
+                                                        <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        )
+                                    }
+                                    else{
+                                        return(
+                                            <li key={'partObject'+num}>
+                                                <ul className='lesson-part'>
+                                                    <li key={'partName'+num}>
+                                                        {part.lessonName}
+                                                    </li>
+                                                    <li key={'partLink'+num}>
+                                                        <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        )
+                                    }
+                                })}
+                                
+                                {
+                                    lesson.exams.map(Exam =>{
+                                        return(
+                                            Exam.link ?
+                                                <li key={'examObject'+num}>
+                                                    <ul className='lesson-part'>
+                                                        <li key={'examName'+num}>
+                                                            {Exam.name }
+                                                        </li>
+                                                        <li key={'examLink'+num}>
+                                                            <a target='_blank' rel="noreferrer" style={{textDecoration: 'none'}} href={Exam.link}>الاختبار</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>     
+                                                :
+                                                ''
+                                        )
+                                    })
+                                }
+                            </ul>
+                            }
+                        </Fragment>
+                    )
                 }
             })}
         </div>
