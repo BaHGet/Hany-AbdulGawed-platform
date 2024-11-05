@@ -22,6 +22,8 @@ import UserView from "./components/Main/Admin/User-View/userView";
 require('./utilities/console.js');
 
 function App({redirect_url}) {
+  // show if the site should be in suspended
+  const isDown = false
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
@@ -39,6 +41,7 @@ function App({redirect_url}) {
   const email = localStorage.getItem("userEmail");
 
   const handleUserexist = async (email) => {
+    // if (isDown) return 1 // if the site is in suspended mode, return 1
     // Check if the user on server side exist or not
     let checkUserExist;
     checkUserExist = await Api.getSpecific(email);
@@ -127,6 +130,9 @@ function App({redirect_url}) {
 
 
   return (
+    isDown ?
+    <h1>Temporarily Unavailable - Sorry for the inconvenience</h1>
+    :
     <div>
       <Header
         user={user}
