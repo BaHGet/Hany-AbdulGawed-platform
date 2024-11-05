@@ -1,6 +1,8 @@
 require('../utilities/fetch.js')
 
-const codesapi = 'https://hany-server.netlify.app/.netlify/functions/api'
+const BASE_URL = 'https://hany-server.netlify.app';
+
+const codesapi = BASE_URL+'/.netlify/functions/api'
 
 export const getAll= async(branch)=>{
     let res;

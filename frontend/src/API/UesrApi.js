@@ -2,8 +2,10 @@ require('../utilities/fetch.js')
 
 const dayjs = require("dayjs");
 
+const BASE_URL = 'https://hany-server.netlify.app';
+
 const accountsapi =
-  "https://hany-server.netlify.app/.netlify/functions/api/accounts"; // check before production
+  BASE_URL + "/.netlify/functions/api/accounts"; // check before production
 
 export const getAll = async () => {
   let res;

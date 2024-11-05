@@ -1,4 +1,6 @@
-const issuesApi = 'https://hany-server.netlify.app/.netlify/functions/api/issues'
+const BASE_URL = 'https://hany-server.netlify.app';
+
+const issuesApi = BASE_URL + '/.netlify/functions/api/issues'
 
 export const getAll = async () => {
     let optiones = {

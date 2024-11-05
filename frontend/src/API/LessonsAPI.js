@@ -1,6 +1,8 @@
 require('../utilities/fetch.js')
 
-const lessonsApi = 'https://hany-server.netlify.app/.netlify/functions/api/lessons'
+const BASE_URL = 'https://hany-server.netlify.app';
+
+const lessonsApi = BASE_URL + '/.netlify/functions/api/lessons'
 
 export const getAll= async(branch)=>{
     let res;
