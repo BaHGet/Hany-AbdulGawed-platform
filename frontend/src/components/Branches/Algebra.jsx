@@ -22,7 +22,7 @@ const Algebra = ({setVideoId, user, userPayingSystem, userCodes}) =>{
         userPayingSystem === null || userPayingSystem === 'none' ||
         localStorage.getItem("userPayingSystem") === 'none'|| userPayingSystem === 'LPS' ||
         localStorage.getItem("userPayingSystem") === 'LPS' || userPayingSystem === 'MPS' ||
-        localStorage.getItem("userPayingSystem") === 'MPS'
+        localStorage.getItem("userPayingSystem") === 'MPS' || localStorage.getItem("userPayingSystem") === '' || userPayingSystem === '' 
     ){
         return(
             <LessonContainer branch={branch} containerName="الجبر" containerLessons={Algebralessons} setVideoId={setVideoId} userCodes={userCodes}/>

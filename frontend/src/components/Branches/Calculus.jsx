@@ -22,7 +22,7 @@ const Calculus = ({setVideoId, user, userPayingSystem, userCodes}) =>{
         userPayingSystem === null || userPayingSystem === 'none' ||
         localStorage.getItem("userPayingSystem") === 'none'|| userPayingSystem === 'LPS' ||
         localStorage.getItem("userPayingSystem") === 'LPS' || userPayingSystem === 'MPS' ||
-        localStorage.getItem("userPayingSystem") === 'MPS'
+        localStorage.getItem("userPayingSystem") === 'MPS' || localStorage.getItem("userPayingSystem") === '' || userPayingSystem === '' 
     ){
         return(
             <LessonContainer branch={branch} containerName="التفاضل والتكامل" containerLessons={Calculuslessons} setVideoId={setVideoId} userCodes={userCodes}/>
