@@ -31,8 +31,7 @@ function App({redirect_url}) {
     payingSystem: "",
   });
   const [userCodes, setUserCodes] = useState();
-  const [isAdmin, setIsAdmin] = useState(localStorage.getItem('admin'))
-  const [userPayingSystem, setPayingSystem] = useState("");
+  const [isAdmin, setIsAdmin] = useState(localStorage.getItem('admin'));
   const [videoId, setVideoId] = useState("");
   const [userExist, setUserExist] = useState(false);
   const { user } = useAuth0();
@@ -56,11 +55,6 @@ function App({redirect_url}) {
         localStorage.setItem("id", checkUserExist.id);
         localStorage.setItem("ServerToken", "exist");
         setUserExist(true);
-        localStorage.setItem("userPayingSystem", checkUserExist.payingSystem);
-
-        if (checkUserExist.payingSystem !== "") {
-          setPayingSystem(checkUserExist.payingSystem);
-        }
       } else {
         localStorage.setItem("ServerToken", "isn`t exist");
         handelUserCreation();
@@ -68,7 +62,7 @@ function App({redirect_url}) {
     }, 100);
   };
   const handelUserCreation = async () => {
-    await Api.createUser(name, email, userPayingSystem).then((res) => {
+    await Api.createUser(name, email).then((res) => {
       if (res.message === "account created!") {
         localStorage.setItem("ServerToken", "exist");
       }
@@ -88,9 +82,7 @@ function App({redirect_url}) {
       setCurrentUser({
         name: user.name,
         email: user.email,
-        picture: user.picture,
-        payingSystem:
-          userPayingSystem || localStorage.getItem("userPayingSystem"),
+        picture: user.picture
       });
       handleUserexist(user.email);
     } else {
@@ -98,9 +90,7 @@ function App({redirect_url}) {
         setCurrentUser({
           name: localStorage.getItem("userName"),
           email: localStorage.getItem("userEmail"),
-          picture: localStorage.getItem("userPicture"),
-          payingSystem:
-            userPayingSystem || localStorage.getItem("userPayingSystem"),
+          picture: localStorage.getItem("userPicture")
         });
         handleUserexist(localStorage.getItem("userEmail"));
       }
@@ -110,23 +100,20 @@ function App({redirect_url}) {
 
   // fetch user available codes
   useEffect(() => {
-    let payingSystem = localStorage.getItem("userPayingSystem");
     if (currentUser) {
       if (currentUser.email) {
-        if (payingSystem === "LPS" || payingSystem === "MPS") {
-          const fetchUserAvailableCodes = async () => {
-            let res = await Api.getAvailableCodes(currentUser.email).then(
-              (data) => {
-                return data;
-              }
-            );
-            setUserCodes(res);
-          };
-          fetchUserAvailableCodes();
-        }
+        const fetchUserAvailableCodes = async () => {
+          let res = await Api.getAvailableCodes(currentUser.email).then(
+            (data) => {
+              return data;
+            }
+          );
+          setUserCodes(res);
+        };
+        fetchUserAvailableCodes();
       }
     }
-  }, [currentUser, user, userPayingSystem]);
+  }, [currentUser, user]);
 
 
   return (
@@ -137,7 +124,6 @@ function App({redirect_url}) {
       <Header
         user={user}
         currentUser={currentUser}
-        userPayingSystem={userPayingSystem}
         isAdmin={isAdmin}
         redirect_url={redirect_url}
       />
@@ -167,7 +153,6 @@ function App({redirect_url}) {
             <SpatialGeomatry
             setVideoId={setVideoId}
             user={email}
-            userPayingSystem={userPayingSystem}
             userCodes={userCodes}
             setUserCodes={setUserCodes} 
             />
@@ -179,7 +164,6 @@ function App({redirect_url}) {
             <Algebra
               setVideoId={setVideoId}
               user={email}
-              userPayingSystem={userPayingSystem}
               userCodes={userCodes}
               setUserCodes={setUserCodes}
             />
@@ -191,7 +175,6 @@ function App({redirect_url}) {
             <Calculus
               setVideoId={setVideoId}
               user={email}
-              userPayingSystem={userPayingSystem}
               userCodes={userCodes}
               setUserCodes={setUserCodes} 
             />
@@ -202,7 +185,6 @@ function App({redirect_url}) {
           element={<Dynamics
               setVideoId={setVideoId}
               user={email}
-              userPayingSystem={userPayingSystem}
               userCodes={userCodes}
               setUserCodes={setUserCodes} 
             />}
@@ -213,7 +195,6 @@ function App({redirect_url}) {
             <Statics
               setVideoId={setVideoId}
               user={email}
-              userPayingSystem={userPayingSystem}
               userCodes={userCodes}
               setUserCodes={setUserCodes} 
             />
@@ -233,7 +214,6 @@ function App({redirect_url}) {
             <SetPayingSystem
               user={email}
               handelUserUpdating={handelUserUpdating}
-              userPayingSystem={userPayingSystem}
             />
           }
         />
