@@ -10,7 +10,7 @@ import LogoutBtn from '../Essential/logout'
 import ErrorPopup from '../Essential/ErrorPopup.jsx';
 require('../../utilities/console.js');
 
-const Header = ({user,show,currentUser,userPayingSystem,isAdmin, redirect_url}) =>{
+const Header = ({user,show,currentUser,isAdmin, redirect_url}) =>{
     
     
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -142,14 +142,6 @@ const Header = ({user,show,currentUser,userPayingSystem,isAdmin, redirect_url}) 
                                                     <img src={currentUser.picture} alt='profile'/>
                                                     <h2 className='dropdownitem-user-name' key={'dropdonwitem'}>{currentUser.name}</h2>
                                                 </div>
-                                            </MenuItem>
-                                            <MenuItem onClick={handleClose}>
-                                                <p className={'dropdonwitem'} key={'dropdonwitem'}>{
-                                                    userPayingSystem === undefined ||  userPayingSystem ==='none' ||  userPayingSystem ===null || userPayingSystem.length === 0?
-                                                    'غير محدد'
-                                                    :
-                                                    userPayingSystem + ':نوع الاشتراك'
-                                                }</p>
                                             </MenuItem>
                                             <MenuItem >
                                                     <button onClick={() => {setOpenError(true); setAnchorEl(null);}}>
