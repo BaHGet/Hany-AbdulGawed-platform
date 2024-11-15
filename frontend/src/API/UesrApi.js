@@ -44,12 +44,12 @@ export const getSpecific= async(email)=>{
   return data;
 };
 
-export const createUser = async (name, email, payingSystem) => {
+export const createUser = async (name, email) => {
   let res;
   const user = {
     name: name,
     email: email,
-    payingSystem: payingSystem,
+    payingSystem: '',
   };
   let optiones = {
     method: "POST",
