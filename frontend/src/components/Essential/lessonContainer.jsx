@@ -117,7 +117,6 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
                     if(userCodes.filter(obj => obj.order === lesson.order).length === 1){
                         let diff = handleDateChange(userCodes, lesson.order)[0]
                         let finalDate =  handleDateChange(userCodes, lesson.order)[1];
-                        
                         return(
                             (diff < 345600000  && diff > 0) || finalDate === 'Open' ? 
                                 <div key={'lesson'+num} className="lesson">
@@ -219,37 +218,33 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
                                     </div>
                                     <ul className='lesson-parts'>
                                         {
-                                            lesson.parts.map((part,num)=>{
-                                                return(
-                                                    part.lessonName.search('مسائل الملزمة') !== -1 &&
-                                                    <li key={'partObject'+num}>
-                                                        <ul className='lesson-part'>
-                                                            <li key={'partName'+num}>
-                                                                {part.lessonName}
-                                                            </li>
-                                                            <li key={'partLink'+num}>
-                                                                <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                )
-                                            })
+                                            lesson.parts.map((part,num)=>(
+                                                part.lessonName.search('مسائل الملزمة') !== -1 &&
+                                                <li key={'partObject'+num}>
+                                                    <ul className='lesson-part'>
+                                                        <li key={'partName'+num}>
+                                                            {part.lessonName}
+                                                        </li>
+                                                        <li key={'partLink'+num}>
+                                                            <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            ))
                                             &&
-                                            lesson.exams.map(Exam =>{
-                                                return(
-                                                    Exam.link &&
-                                                    <li key={'examObject'+num}>
-                                                        <ul className='lesson-part'>
-                                                            <li key={'examName'+num}>
-                                                                {Exam.name }
-                                                            </li>
-                                                            <li key={'examLink'+num}>
-                                                                <a target='_blank' rel="noreferrer" style={{textDecoration: 'none'}} href={Exam.link}>الاختبار</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                )
-                                            })
+                                            lesson.exams.map(Exam =>(
+                                                Exam.link &&
+                                                <li key={'examObject'+num}>
+                                                    <ul className='lesson-part'>
+                                                        <li key={'examName'+num}>
+                                                            {Exam.name }
+                                                        </li>
+                                                        <li key={'examLink'+num}>
+                                                            <a target='_blank' rel="noreferrer" style={{textDecoration: 'none'}} href={Exam.link}>الاختبار</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            ))
                                         }
                                     </ul>
                                 </div>
@@ -294,55 +289,21 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
                                 {
                                 lesson.order.search('revision') === -1 &&
                                 <ul key={'lesson-parts'+num} className='lesson-parts'>
-                                    {lesson.parts.map((part,num)=>{
-                                        if(part.lessonName.search('مسائل الملزمة') !== -1){
-                                            return(
-                                                <li key={'partObject'+num}>
-                                                    <ul className='lesson-part'>
-                                                        <li key={'partName'+num}>
-                                                            {part.lessonName}
-                                                        </li>
-                                                        <li key={'partLink'+num}>
-                                                            <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            )
-                                        }
-                                        else{
-                                            return(
-                                                <li key={'partObject'+num}>
-                                                    <ul className='lesson-part'>
-                                                        <li key={'partName'+num}>
-                                                            {part.lessonName}
-                                                        </li>
-                                                        <li key={'partLink'+num}>
-                                                            <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            )
-                                        }
-                                    })}
-                                    
                                     {
-                                        lesson.exams.map(Exam =>{
-                                            return(
-                                                Exam.link ?
-                                                    <li key={'examObject'+num}>
-                                                        <ul className='lesson-part'>
-                                                            <li key={'examName'+num}>
-                                                                {Exam.name }
-                                                            </li>
-                                                            <li key={'examLink'+num}>
-                                                                <a target='_blank' rel="noreferrer" style={{textDecoration: 'none'}} href={Exam.link}>الاختبار</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>     
-                                                    :
-                                                    ''
+                                        lesson.parts.map((part,num)=>(
+                                            part.lessonName.search('مسائل الملزمة') !== -1 &&
+                                                <li key={'partObject'+num}>
+                                                    <ul className='lesson-part'>
+                                                        <li key={'partName'+num}>
+                                                            {part.lessonName}
+                                                        </li>
+                                                        <li key={'partLink'+num}>
+                                                            <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                             )
-                                        })
+                                        )
                                     }
                                 </ul>
                                 }
@@ -387,11 +348,10 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
                                 </div>
                             </div>
                             {
-                            lesson.order.search('revision') === -1 &&
+                            lesson.order.search('مسائل الملزمة') === -1 &&
                             <ul key={'lesson-parts'+num} className='lesson-parts'>
-                                {lesson.parts.map((part,num)=>{
-                                    if(part.lessonName.search('مسائل الملزمة') !== -1){
-                                        return(
+                                {lesson.parts.map((part,num)=>(
+                                    part.lessonName.search('مسائل الملزمة') !== -1 &&
                                             <li key={'partObject'+num}>
                                                 <ul className='lesson-part'>
                                                     <li key={'partName'+num}>
@@ -402,43 +362,7 @@ const LessonContainer = ({ branch, containerName, containerLessons, userCodes, s
                                                     </li>
                                                 </ul>
                                             </li>
-                                        )
-                                    }
-                                    else{
-                                        return(
-                                            <li key={'partObject'+num}>
-                                                <ul className='lesson-part'>
-                                                    <li key={'partName'+num}>
-                                                        {part.lessonName}
-                                                    </li>
-                                                    <li key={'partLink'+num}>
-                                                        <a target='_blank' rel="noreferrer"  style={{textDecoration: 'none'}} href={part.link}>القائمة</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        )
-                                    }
-                                })}
-                                
-                                {
-                                    lesson.exams.map(Exam =>{
-                                        return(
-                                            Exam.link ?
-                                                <li key={'examObject'+num}>
-                                                    <ul className='lesson-part'>
-                                                        <li key={'examName'+num}>
-                                                            {Exam.name }
-                                                        </li>
-                                                        <li key={'examLink'+num}>
-                                                            <a target='_blank' rel="noreferrer" style={{textDecoration: 'none'}} href={Exam.link}>الاختبار</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>     
-                                                :
-                                                ''
-                                        )
-                                    })
-                                }
+                                    ))}
                             </ul>
                             }
                         </Fragment>
